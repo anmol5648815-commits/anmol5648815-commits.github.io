@@ -22,6 +22,7 @@
   var setMenu = function (open) {
     toggle.setAttribute('aria-expanded', String(open));
     links.classList.toggle('is-open', open);
+    toggle.textContent = open ? 'Close' : 'Menu';
   };
   toggle.addEventListener('click', function () {
     setMenu(toggle.getAttribute('aria-expanded') !== 'true');
@@ -37,7 +38,7 @@
 
   /* Current section indicator in the nav */
   var navMap = {};
-  links.querySelectorAll('a[href^="#"]:not(.btn)').forEach(function (a) { navMap[a.getAttribute('href').slice(1)] = a; });
+  links.querySelectorAll('a[href^="#"]').forEach(function (a) { navMap[a.getAttribute('href').slice(1)] = a; });
   if ('IntersectionObserver' in window) {
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -54,27 +55,7 @@
     Object.keys(navMap).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
-  /* Hero: the CV redline edit */
-  var sheet = document.querySelector('.sheet');
-  var replay = document.getElementById('replay');
-  if (sheet) {
-    sheet.querySelectorAll('.edit').forEach(function (li, i) { li.style.setProperty('--i', i); });
-    var play = function () {
-      sheet.classList.remove('is-playing');
-      sheet.classList.add('is-ready');
-      void sheet.offsetWidth; // restart CSS animations
-      sheet.classList.add('is-playing');
-    };
-    if (reduceMotion) {
-      if (replay) replay.hidden = true;
-    } else {
-      /* Hidden "before" state straight away; motion.js starts the edit once the sheet has landed */
-      sheet.classList.add('is-ready');
-      if (!document.documentElement.classList.contains('motion-pending')) play();
-      if (replay) replay.addEventListener('click', play);
-    }
-  }
-  window.DVS = { playEdit: sheet && !reduceMotion ? play : function () {} };
+
 
   /* Process timeline: line fills as you scroll through the steps */
   var steps = document.getElementById('steps');

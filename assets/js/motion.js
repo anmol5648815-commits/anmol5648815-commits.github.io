@@ -1,112 +1,51 @@
-/* Digital Virtuoso Services: motion layer
-   Built on framer-motion's DOM API (no React), vendored at ./vendor/framer-motion-dom.min.js.
-   Rules: transform/opacity only, springs for anything the pointer drives,
-   interruptible, and nothing at all when reduced motion is requested. */
-import { animate, scroll, inView, hover, stagger } from './vendor/framer-motion-dom.min.js';
+/* Digital Virtuoso Services: section motion (below the shelf)
+   framer-motion's DOM API, vendored at ./vendor/framer-motion-dom.min.js.
+   House rule from the catalogue design: no opacity fades. Every reveal is a
+   mask slide or a clip. Nothing runs when reduced motion is requested. */
+import { animate, inView, hover, stagger } from './vendor/framer-motion-dom.min.js';
 
-const root = document.documentElement;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
-const release = () => root.classList.remove('motion-pending');
-
-const SPRING_ENTER = { type: 'spring', stiffness: 120, damping: 20, mass: 0.9 };
+const EASE = [0.2, 0.8, 0.2, 1];
 const SPRING_POINTER = { type: 'spring', stiffness: 260, damping: 24 };
 const SPRING_SETTLE = { type: 'spring', stiffness: 170, damping: 22 };
+const below = (el) => el.getBoundingClientRect().top > innerHeight;
 
-if (reduce) {
-  release();
-} else {
-  heroEntrance();
-  sheetDepthOnScroll();
-  if (finePointer) {
-    const sheetHost = document.querySelector('.sheet');
-    tilt(document.getElementById('sheet-tilt'), { max: 7, host: sheetHost, glareHost: sheetHost });
-    document.querySelectorAll('.tier').forEach((card) => tilt(card, { max: 5, lift: 6, host: wrapStatic(card, 'tier-host') }));
-    document.querySelectorAll('.hero__actions .btn--accent, .contact .btn--large').forEach(magnetic);
-  }
-  revealGroup('.tiers', '.tier', { y: 48, rotateX: 14 });
-  revealGroup('#steps', '.step', { y: 24 });
-  revealGroup('.quotes', '.quote', { y: 32 });
+if (!reduce) {
+  headings();
+  clipReveal('.cat', '.cat__row');
+  clipReveal('.tiers', '.tier');
+  clipReveal('#steps', '.step');
+  clipReveal('.quotes', '.quote');
+  clipReveal('.facts', '.facts > div');
+  if (finePointer) document.querySelectorAll('.contact .btn--large, .reviews__foot .btn').forEach(magnetic);
 }
 
-/* 1. Hero: headline is already visible (good for LCP); supporting copy cascades in,
-      then the CV sheet drops onto the page in 3D and the redline edit begins. */
-function heroEntrance() {
-  const copy = [...document.querySelectorAll('.hero__copy [data-enter]')];
-  const sheet = document.querySelector('.sheet[data-enter]');
-  copy.forEach((el) => { el.style.opacity = '0'; });
-  if (sheet) sheet.style.opacity = '0';
-  release();
-
-  animate(copy, { opacity: [0, 1], y: [18, 0] }, { ...SPRING_ENTER, delay: stagger(0.07, { startDelay: 0.05 }) });
-
-  if (!sheet) return;
-  const landed = animate(
-    sheet,
-    { opacity: [0, 1], y: [70, 0], rotateX: [32, 0], scale: [0.94, 1] },
-    { ...SPRING_ENTER, transformPerspective: 1100, delay: 0.25 }
-  );
-  let started = false;
-  const startEdit = () => { if (!started) { started = true; window.DVS && window.DVS.playEdit(); } };
-  Promise.resolve(landed.finished || landed).then(startEdit);
-  setTimeout(startEdit, 1600); // never wait on a slow frame budget
-}
-
-/* 2. Scroll depth: as the hero leaves, the sheet sinks back into the page. */
-function sheetDepthOnScroll() {
-  const hero = document.querySelector('.hero');
-  const tiltLayer = document.getElementById('sheet-tilt');
-  if (!hero || !tiltLayer || matchMedia('(max-width: 900px)').matches) return;
-  const wrap = document.createElement('div');
-  tiltLayer.parentNode.insertBefore(wrap, tiltLayer);
-  wrap.appendChild(tiltLayer);
-  wrap.style.transformStyle = 'preserve-3d';
-  scroll(
-    animate(wrap, { y: [0, -60], rotateX: [0, 12], scale: [1, 0.95] }, { ease: 'linear' }),
-    { target: hero, offset: ['start start', 'end start'] }
-  );
-}
-
-/* Pointer events go to a wrapper that never moves. If the moving element listened itself,
-   its edges would rotate away from a still cursor and fire pointerleave (tilt flicker). */
-function wrapStatic(el, className) {
-  const w = document.createElement('div');
-  w.className = className + (el.classList.contains('tier--featured') ? ' ' + className + '--featured' : '');
-  el.parentNode.insertBefore(w, el);
-  w.appendChild(el);
-  return w;
-}
-
-/* 3. Pointer tilt with a moving light, sprung so it settles naturally and can be interrupted. */
-function tilt(el, { max = 6, lift = 0, host = el, glareHost = el } = {}) {
-  if (!el || !host) return;
-  let raf = 0;
-  hover(host, () => {
-    glareHost.classList.add('is-tilting');
-    const onMove = (e) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = host.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width;   // 0..1
-        const py = (e.clientY - r.top) / r.height;   // 0..1
-        glareHost.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
-        glareHost.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
-        if (glareHost !== el) { el.style.setProperty('--gx', (px * 100).toFixed(1) + '%'); el.style.setProperty('--gy', (py * 100).toFixed(1) + '%'); }
-        animate(el, { rotateY: (px - 0.5) * 2 * max, rotateX: (0.5 - py) * 2 * max, y: -lift },
-          { ...SPRING_POINTER, transformPerspective: 1000 });
-      });
-    };
-    host.addEventListener('pointermove', onMove);
-    return () => {
-      cancelAnimationFrame(raf);
-      host.removeEventListener('pointermove', onMove);
-      glareHost.classList.remove('is-tilting');
-      animate(el, { rotateX: 0, rotateY: 0, y: 0 }, { ...SPRING_SETTLE, transformPerspective: 1000 });
-    };
+/* Section headings rise out of their own mask */
+function headings() {
+  document.querySelectorAll('.sec .h2').forEach((h) => {
+    if (!below(h)) return;
+    h.innerHTML = '<span class="line"><span>' + h.innerHTML + '</span></span>';
+    const inner = h.querySelector('.line > span');
+    inner.style.transform = 'translateY(110%)';
+    inView(h, () => { animate(inner, { y: ['110%', '0%'] }, { duration: 0.9, ease: EASE }); }, { amount: 0.5 });
   });
 }
 
-/* 4. Magnetic CTA: the button leans a few pixels toward the cursor. */
+/* Items wipe in from the top edge, like a page printed line by line */
+function clipReveal(groupSel, itemSel) {
+  const group = document.querySelector(groupSel);
+  if (!group || !below(group)) return;
+  const items = [...group.querySelectorAll(itemSel)];
+  items.forEach((el) => { el.style.clipPath = 'inset(0 0 100% 0)'; el.style.transform = 'translateY(24px)'; });
+  inView(group, () => {
+    animate(items, { clipPath: ['inset(0% 0% 100% 0%)', 'inset(0% 0% 0% 0%)'], y: [24, 0] },
+      { duration: 0.9, ease: EASE, delay: stagger(0.08) })
+      .then?.(() => items.forEach((el) => { el.style.clipPath = ''; }));
+  }, { amount: 0.15 });
+}
+
+/* Magnetic CTA: the button leans a few pixels toward the cursor */
 function magnetic(btn) {
   const strength = 0.18, limit = 7;
   hover(btn, () => {
@@ -117,24 +56,6 @@ function magnetic(btn) {
       animate(btn, { x: dx, y: dy }, SPRING_POINTER);
     };
     btn.addEventListener('pointermove', onMove);
-    return () => {
-      btn.removeEventListener('pointermove', onMove);
-      animate(btn, { x: 0, y: 0 }, SPRING_SETTLE);
-    };
+    return () => { btn.removeEventListener('pointermove', onMove); animate(btn, { x: 0, y: 0 }, SPRING_SETTLE); };
   });
-}
-
-/* 5. Staggered reveal of a group the first time it scrolls into view.
-      Groups already on screen at load are left alone so nothing flickers. */
-function revealGroup(groupSel, itemSel, { y = 24, rotateX = 0 } = {}) {
-  const group = document.querySelector(groupSel);
-  if (!group) return;
-  const items = [...group.querySelectorAll(itemSel)];
-  if (!items.length || group.getBoundingClientRect().top < innerHeight) return;
-  items.forEach((el) => { el.style.opacity = '0'; });
-  inView(group, () => {
-    animate(items,
-      { opacity: [0, 1], y: [y, 0], ...(rotateX ? { rotateX: [rotateX, 0] } : {}) },
-      { ...SPRING_ENTER, transformPerspective: 1200, delay: stagger(0.08) });
-  }, { amount: 0.2 });
 }
