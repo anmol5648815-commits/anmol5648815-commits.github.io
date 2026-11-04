@@ -326,10 +326,58 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .sec-lede { margin-top: 20px; color: var(--muted); }
 
 /* Who it's for */
-.fit__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
-.fit__list { margin-top: 32px; border-top: 1px solid var(--rule); }
-.fit__list li { display: flex; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--hair); font-size: 17px; }
-.fit__list .box { flex: none; width: 74px; justify-content: center; transform: translateY(-2px); }
+/* Who it's for: a dark printed band. The page's one pattern interrupt:
+   light paper hero, then ink, then back to paper. */
+.band {
+  --cream: #EDE6D6;
+  position: relative; isolation: isolate; overflow: hidden;
+  background: #101116; color: var(--cream);
+  border-top: 0; min-height: min(100svh, 980px);
+  display: grid; align-items: center;
+}
+.band__media { position: absolute; inset: -8% 0; z-index: -2; }
+.band__media picture, .band__img { display: block; width: 100%; height: 100%; }
+.band__img { object-fit: cover; object-position: 62% 50%; }
+/* Printed finish: ink scrim on the reading side, halftone dots, plate edge */
+.band::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(rgba(16, 17, 22, .42) 1px, transparent 1.6px) 0 0 / 4px 4px,
+    linear-gradient(90deg, rgba(16, 17, 22, .97) 0%, rgba(16, 17, 22, .92) 34%, rgba(16, 17, 22, .55) 52%, rgba(16, 17, 22, .1) 70%, rgba(16, 17, 22, 0) 100%),
+    linear-gradient(180deg, rgba(16, 17, 22, .65) 0%, transparent 18%, transparent 80%, rgba(16, 17, 22, .8) 100%);
+}
+.band::after {
+  content: ""; position: absolute; inset: 14px; z-index: -1; pointer-events: none;
+  border: 1px solid rgba(237, 230, 214, .28);
+}
+.band__inner { display: grid; justify-items: start; gap: 28px; }
+.band__inner > * { max-width: 34rem; }
+.band__kicker { border-color: var(--cream); color: var(--cream); }
+.band__title { max-width: 15ch; font-size: clamp(38px, 4.6vw, 66px); }
+.band .lede { color: rgba(237, 230, 214, .86); }
+.band .fit__body { display: grid; gap: 0; justify-items: start; }
+.fit__list { margin-top: 32px; border-top: 1px solid rgba(237, 230, 214, .7); width: 100%; }
+.fit__list li { display: flex; align-items: baseline; gap: 16px; padding: 15px 0; border-bottom: 1px solid rgba(237, 230, 214, .22); font-size: 17px; }
+.fit__list .box { flex: none; width: 74px; justify-content: center; transform: translateY(-2px); border-color: rgba(237, 230, 214, .8); }
+.band__cta { margin-top: 32px; }
+.btn--paper { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+@media (hover: hover) { .btn--paper:hover { background: transparent; color: var(--cream); } }
+.band :focus-visible { outline-color: var(--cream); }
+
+@media (max-width: 767px) {
+  /* Photo on top, text below on solid ink: the figure stays whole and the copy stays readable */
+  .band { min-height: 0; align-items: end; padding-top: 54svh; }
+  .band__media { inset: -3% 0 auto 0; height: 62svh; }
+  .band__img { object-position: 50% 45%; }
+  .band__media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(16, 17, 22, .35) 0%, rgba(16, 17, 22, 0) 22%, rgba(16, 17, 22, 0) 58%, #101116 88%);
+  }
+  .band::before {
+    background: radial-gradient(rgba(16, 17, 22, .42) 1px, transparent 1.6px) 0 0 / 4px 4px;
+  }
+  .band::after { inset: 8px; }
+}
 
 /* Services catalogue */
 .cat { margin-top: 56px; border-top: 1px solid var(--rule); }

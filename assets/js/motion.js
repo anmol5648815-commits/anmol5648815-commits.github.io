@@ -2,7 +2,7 @@
    framer-motion's DOM API, vendored at ./vendor/framer-motion-dom.min.js.
    House rule from the catalogue design: no opacity fades. Every reveal is a
    mask slide or a clip. Nothing runs when reduced motion is requested. */
-import { animate, inView, hover, stagger } from './vendor/framer-motion-dom.min.js';
+import { animate, scroll, inView, hover, stagger } from './vendor/framer-motion-dom.min.js';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -12,6 +12,7 @@ const SPRING_SETTLE = { type: 'spring', stiffness: 170, damping: 22 };
 const below = (el) => el.getBoundingClientRect().top > innerHeight;
 
 if (!reduce) {
+  printBand();
   headings();
   clipReveal('.cat', '.cat__row');
   clipReveal('.tiers', '.tier');
@@ -19,6 +20,22 @@ if (!reduce) {
   clipReveal('.quotes', '.quote');
   clipReveal('.facts', '.facts > div');
   if (finePointer) document.querySelectorAll('.contact .btn--large, .reviews__foot .btn').forEach(magnetic);
+}
+
+/* The dark band: the photo prints in from the top edge like a plate going
+   through the press, then drifts slower than the page (parallax by transform only). */
+function printBand() {
+  const band = document.querySelector('.band');
+  const media = band && band.querySelector('.band__media');
+  if (!band || !media) return;
+  scroll(animate(media, { y: ['-6%', '6%'] }, { ease: 'linear' }), { target: band, offset: ['start end', 'end start'] });
+  if (!below(band)) return;
+  const img = media.querySelector('img');
+  img.style.clipPath = 'inset(0 0 100% 0)';
+  inView(band, () => {
+    animate(img, { clipPath: ['inset(0% 0% 100% 0%)', 'inset(0% 0% 0% 0%)'], scale: [1.08, 1] },
+      { duration: 1.4, ease: [0.76, 0, 0.18, 1] });
+  }, { amount: 0.15 });
 }
 
 /* Section headings rise out of their own mask */

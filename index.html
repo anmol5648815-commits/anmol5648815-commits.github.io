@@ -186,10 +186,18 @@
       </div>
     </section>
 
-    <!-- WHO IT'S FOR -->
-    <section class="sec fit" aria-labelledby="fit-title">
-      <div class="wrap fit__grid">
-        <h2 id="fit-title" class="h2 h2--md">Most CVs list duties. Hiring managers are looking for evidence.</h2>
+    <!-- WHO IT'S FOR: dark printed band, the page's pattern interrupt -->
+    <section class="sec fit band" aria-labelledby="fit-title">
+      <div class="band__media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 767px)" srcset="assets/img/bands/standout-portrait.webp" type="image/webp">
+          <source srcset="assets/img/bands/standout-1280.webp 1280w, assets/img/bands/standout-2000.webp 2000w" sizes="100vw" type="image/webp">
+          <img class="band__img" src="assets/img/bands/standout-1280.webp" width="1280" height="854" alt="" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="wrap band__inner">
+        <p class="lbl box band__kicker">Why good candidates get missed</p>
+        <h2 id="fit-title" class="h2 h2--md band__title">Most CVs list duties. Hiring managers are looking for evidence.</h2>
         <div class="fit__body">
           <p class="lede">Strong candidates get filtered out because their CV reads like a job description. I find the decisions, numbers and outcomes behind your work and put them where a recruiter will see them in the first six seconds.</p>
           <ul class="fit__list">
@@ -198,6 +206,7 @@
             <li><span class="lbl box">Abroad</span> Professionals applying to companies in another country</li>
             <li><span class="lbl box">Refresh</span> Anyone whose LinkedIn hasn’t kept up with their career</li>
           </ul>
+          <a class="btn btn--paper band__cta" href="#services">Find the right service</a>
         </div>
       </div>
     </section>
