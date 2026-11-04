@@ -68,10 +68,13 @@
     if (reduceMotion) {
       if (replay) replay.hidden = true;
     } else {
-      play();
+      /* Hidden "before" state straight away; motion.js starts the edit once the sheet has landed */
+      sheet.classList.add('is-ready');
+      if (!document.documentElement.classList.contains('motion-pending')) play();
       if (replay) replay.addEventListener('click', play);
     }
   }
+  window.DVS = { playEdit: sheet && !reduceMotion ? play : function () {} };
 
   /* Process timeline: line fills as you scroll through the steps */
   var steps = document.getElementById('steps');

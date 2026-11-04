@@ -713,3 +713,43 @@ section { padding-block: var(--section); }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-delay: 0s !important; }
   .steps::after { transform: scaleY(1); }
 }
+
+/* --------------------------------------------------------------------------
+   Motion layer (framer-motion DOM API, assets/js/motion.js)
+   Everything here is progressive: without JS or with reduced motion,
+   the page renders in its final state.
+   -------------------------------------------------------------------------- */
+.motion-pending [data-enter] { opacity: 0; }
+
+/* 3D: the CV sheet tilts toward the pointer inside a perspective space */
+.sheet { perspective: 1100px; }
+.sheet__tilt { transform-style: preserve-3d; will-change: transform; }
+.sheet__paper { position: relative; overflow: hidden; }
+.sheet__glare {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: radial-gradient(420px circle at var(--gx, 70%) var(--gy, 0%), rgba(255, 255, 255, .55), transparent 55%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity var(--dur-3) var(--ease-out);
+}
+.sheet.is-tilting .sheet__glare { opacity: 1; }
+
+/* 3D: package cards tilt on fine pointers */
+.tiers { perspective: 1400px; }
+.tier { transform-style: preserve-3d; }
+.tier::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(360px circle at var(--gx, 50%) var(--gy, 0%), rgba(217, 191, 142, .14), transparent 60%);
+  opacity: 0; transition: opacity var(--dur-3) var(--ease-out);
+}
+.tier.is-tilting::after { opacity: 1; }
+.tier > *:not(.tier__badge) { position: relative; z-index: 1; }
+.tier__badge { z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-pending [data-enter] { opacity: 1; }
+  .sheet__tilt { will-change: auto; }
+}
+.tier-host { display: flex; perspective: 1400px; }
+.tier-host > .tier { flex: 1; }
+@media (max-width: 960px) { .tier-host--featured { order: -1; } }

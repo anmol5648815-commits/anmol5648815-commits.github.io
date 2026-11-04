@@ -1,0 +1,12 @@
+{
+  "name": "dvs-site",
+  "private": true,
+  "description": "Build tooling for the Digital Virtuoso Services static site. Only needed to rebuild the vendored animation bundle.",
+  "scripts": {
+    "build:motion": "esbuild tools/motion-entry.js --bundle --minify --format=esm --target=es2019 \"--banner:js=/*! framer-motion 14.4.0 (DOM API: animate, scroll, inView, hover, press, stagger) | MIT License | Copyright (c) 2018 Framer B.V. | https://www.npmjs.com/package/framer-motion */\" --outfile=assets/js/vendor/framer-motion-dom.min.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2",
+    "framer-motion": "14.4.0"
+  }
+}
