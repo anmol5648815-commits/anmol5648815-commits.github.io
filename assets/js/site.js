@@ -31,6 +31,28 @@
     if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
   });
   window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+  document.addEventListener('click', function (e) {
+    if (toggle.getAttribute('aria-expanded') === 'true' && !e.target.closest('.nav')) setMenu(false);
+  });
+
+  /* Current section indicator in the nav */
+  var navMap = {};
+  links.querySelectorAll('a[href^="#"]:not(.btn)').forEach(function (a) { navMap[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var a = navMap[en.target.id];
+        if (!a) return;
+        if (en.isIntersecting) {
+          Object.keys(navMap).forEach(function (k) { navMap[k].removeAttribute('aria-current'); });
+          a.setAttribute('aria-current', 'location');
+        } else if (a.hasAttribute('aria-current')) {
+          a.removeAttribute('aria-current');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(navMap).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
 
   /* Hero: the CV redline edit */
   var sheet = document.querySelector('.sheet');
@@ -94,26 +116,41 @@
   if (form) {
     var status = document.getElementById('form-status');
     var submit = form.querySelector('.form__submit');
+    var required = form.querySelectorAll('[required]');
+
+    /* Show or clear the inline error under one field; returns validity */
+    var check = function (el) {
+      var ok = el.checkValidity();
+      var err = document.getElementById(el.getAttribute('aria-describedby'));
+      el.closest('.field').classList.toggle('is-invalid', !ok);
+      el.setAttribute('aria-invalid', String(!ok));
+      if (err) { err.textContent = ok ? '' : err.getAttribute('data-msg'); err.hidden = ok; }
+      return ok;
+    };
+    required.forEach(function (el) {
+      /* Validate when the person leaves a field they've touched, then live once it has shown an error */
+      el.addEventListener('blur', function () { if (el.value !== '') check(el); });
+      el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', function () {
+        if (el.getAttribute('aria-invalid') === 'true') check(el);
+      });
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       status.textContent = '';
       status.classList.remove('is-error');
 
-      var firstBad = null;
-      form.querySelectorAll('[required]').forEach(function (el) {
-        var ok = el.checkValidity();
-        el.closest('.field').classList.toggle('is-invalid', !ok);
-        el.setAttribute('aria-invalid', String(!ok));
-        if (!ok && !firstBad) firstBad = el;
-      });
-      if (firstBad) {
-        status.textContent = 'Add your name, a valid email and what you need, then send again.';
+      var bad = [];
+      required.forEach(function (el) { if (!check(el)) bad.push(el); });
+      if (bad.length) {
+        status.textContent = bad.length === 1 ? '1 field needs attention.' : bad.length + ' fields need attention.';
         status.classList.add('is-error');
-        firstBad.focus();
+        bad[0].focus();
         return;
       }
 
       submit.disabled = true;
+      form.setAttribute('aria-busy', 'true');
       submit.textContent = 'Sending…';
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (res) {
@@ -123,6 +160,7 @@
         })
         .catch(function () {
           submit.disabled = false;
+          form.removeAttribute('aria-busy');
           submit.textContent = 'Send message';
           status.innerHTML = 'The message didn’t send. Check your connection and try again, or email <a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a>.';
           status.classList.add('is-error');
