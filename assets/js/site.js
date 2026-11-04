@@ -95,6 +95,29 @@
     new IntersectionObserver(function (e) { contactNear = e[0].isIntersecting; sync(); }, { rootMargin: '0px 0px -20% 0px' }).observe(contact);
   }
 
+  /* Finale band: put the booking button on the glasses, between the two lenses.
+     The point is measured in the photo (49% across, 73% down) and mapped through
+     object-fit: cover, so it stays on target at any window size. */
+  var fin = document.querySelector('.band--finale');
+  if (fin) {
+    var fImg = fin.querySelector('.band__img'), fMedia = fin.querySelector('.band__media');
+    var POINT_X = 0.488, POINT_Y = 0.73, POS_X = 0.5, POS_Y = 0.66, RATIO = 960 / 1280;
+    var placeCta = function () {
+      if (!matchMedia('(min-width: 768px)').matches) {
+        fin.style.removeProperty('--bridge-x'); fin.style.removeProperty('--bridge-y'); return;
+      }
+      var mw = fMedia.offsetWidth, mh = fMedia.offsetHeight;
+      var rh = Math.max(mh, mw * RATIO), rw = rh / RATIO;   // rendered image size under object-fit: cover
+      var x = fMedia.offsetLeft + (mw - rw) * POS_X + rw * POINT_X;
+      var y = fMedia.offsetTop + (mh - rh) * POS_Y + rh * POINT_Y;
+      fin.style.setProperty('--bridge-x', Math.round(x) + 'px');
+      fin.style.setProperty('--bridge-y', Math.round(y) + 'px');
+    };
+    placeCta();
+    window.addEventListener('resize', placeCta);
+    if (fImg && !fImg.complete) fImg.addEventListener('load', placeCta);
+  }
+
   /* Contact form via Formspree */
   var form = document.getElementById('contact-form');
   if (form) {

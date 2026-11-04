@@ -19,15 +19,17 @@ if (!reduce) {
   clipReveal('#steps', '.step');
   clipReveal('.quotes', '.quote');
   clipReveal('.facts', '.facts > div');
-  if (finePointer) document.querySelectorAll('.contact .btn--large, .reviews__foot .btn').forEach(magnetic);
+  if (finePointer) document.querySelectorAll('.finale__cta, .reviews__foot .btn').forEach(magnetic);
 }
 
 /* The dark band: the photo prints in from the top edge like a plate going
    through the press, then drifts slower than the page (parallax by transform only). */
 function printBand() {
-  const band = document.querySelector('.band');
-  const media = band && band.querySelector('.band__media');
-  if (!band || !media) return;
+  document.querySelectorAll('.band').forEach(printOne);
+}
+function printOne(band) {
+  const media = band.querySelector('.band__media');
+  if (!media) return;
   scroll(animate(media, { y: ['-6%', '6%'] }, { ease: 'linear' }), { target: band, offset: ['start end', 'end start'] });
   if (!below(band)) return;
   const img = media.querySelector('img');

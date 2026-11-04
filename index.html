@@ -439,57 +439,67 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="sec contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap contact__grid">
-        <div class="contact__copy">
-          <h2 id="contact-title" class="h2 h2--xl">Ready for the next role? Let’s talk about it.</h2>
-          <p class="lede">The quickest way to reach me is WhatsApp. I reply within 24 hours.</p>
-          <a class="btn btn--cobalt btn--large" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Book a free call on WhatsApp</a>
-          <ul class="contact__alt">
-            <li><span class="lbl">Email</span> <a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
-            <li><span class="lbl">Where</span> Working with clients worldwide, remotely</li>
-          </ul>
+    <!-- CONTACT: the finale band. Through the lenses everything is sharp:
+         the booking button sits on the bridge, where the eye lands first. -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="sec band band--finale">
+        <div class="band__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/bands/focus-mobile.webp" type="image/webp">
+            <source srcset="assets/img/bands/focus-1280.webp 1280w, assets/img/bands/focus-2000.webp 2000w" sizes="100vw" type="image/webp">
+            <img class="band__img" src="assets/img/bands/focus-1280.webp" width="1280" height="960" alt="" loading="lazy" decoding="async">
+          </picture>
         </div>
-
-        <form class="form" id="contact-form" action="https://formspree.io/f/mkovywaw" method="POST" novalidate>
-          <h3 class="form__title">Prefer email? Send a message.</h3>
-          <p class="form__hint">Fields marked <span aria-hidden="true">*</span><span class="sr">with an asterisk</span> are required.</p>
-          <div class="field">
-            <label class="lbl" for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
-            <p class="field__error" id="f-name-err" data-msg="Enter your name so I know who to reply to." hidden></p>
-          </div>
-          <div class="field">
-            <label class="lbl" for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
-            <p class="field__error" id="f-email-err" data-msg="Enter an email address like name@example.com." hidden></p>
-          </div>
-          <div class="field">
-            <label class="lbl" for="f-service">What do you need? <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-service" name="service" required aria-describedby="f-service-err">
-              <option value="">Choose one</option>
-              <option>CV Rewrite</option>
-              <option>CV + LinkedIn</option>
-              <option>Career Accelerator</option>
-              <option>Interview coaching only</option>
-              <option>Career coaching</option>
-              <option>Something else</option>
-            </select>
-            <p class="field__error" id="f-service-err" data-msg="Choose the service you’re interested in." hidden></p>
-          </div>
-          <div class="field">
-            <label class="lbl" for="f-role">Role you’re aiming for <span class="opt">(optional)</span></label>
-            <input id="f-role" name="target_role" type="text" autocomplete="organization-title" placeholder="e.g. Senior Product Manager">
-          </div>
-          <div class="field">
-            <label class="lbl" for="f-msg">Message <span class="opt">(optional)</span></label>
-            <textarea id="f-msg" name="message" rows="4"></textarea>
-          </div>
-          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn--line form__submit" type="submit">Send message</button>
-          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="wrap band__inner finale__inner">
+          <p class="lbl box band__kicker">Free call / WhatsApp</p>
+          <h2 id="contact-title" class="h2 h2--xl finale__title">Ready for the next role? Let’s bring it into focus.</h2>
+          <p class="lede finale__lede">Tell me where you are and where you want to go. The quickest way to reach me is WhatsApp, and I reply within 24 hours.</p>
+          <a class="btn btn--paper btn--large finale__cta" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Book a free call on WhatsApp</a>
+        </div>
+      </div>
+      <div class="wrap contact__formwrap">
+          <form class="form" id="contact-form" action="https://formspree.io/f/mkovywaw" method="POST" novalidate>
+            <h3 class="form__title">Prefer email? Send a message.</h3>
+            <ul class="contact__alt">
+              <li><span class="lbl">Email</span> <a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
+              <li><span class="lbl">Where</span> Working with clients worldwide, remotely</li>
+            </ul>
+            <p class="form__hint">Fields marked <span aria-hidden="true">*</span><span class="sr">with an asterisk</span> are required.</p>
+            <div class="field">
+              <label class="lbl" for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" data-msg="Enter your name so I know who to reply to." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" data-msg="Enter an email address like name@example.com." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-service">What do you need? <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-service" name="service" required aria-describedby="f-service-err">
+                <option value="">Choose one</option>
+                <option>CV Rewrite</option>
+                <option>CV + LinkedIn</option>
+                <option>Career Accelerator</option>
+                <option>Interview coaching only</option>
+                <option>Career coaching</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__error" id="f-service-err" data-msg="Choose the service you’re interested in." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-role">Role you’re aiming for <span class="opt">(optional)</span></label>
+              <input id="f-role" name="target_role" type="text" autocomplete="organization-title" placeholder="e.g. Senior Product Manager">
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-msg">Message <span class="opt">(optional)</span></label>
+              <textarea id="f-msg" name="message" rows="4"></textarea>
+            </div>
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn--line form__submit" type="submit">Send message</button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
       </div>
     </section>
   </main>
