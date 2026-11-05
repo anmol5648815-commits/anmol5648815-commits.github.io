@@ -1,0 +1,6 @@
+# GitHub Pages (Jekyll) settings. Keeps build tooling out of the published site.
+exclude:
+  - package.json
+  - package-lock.json
+  - node_modules
+  - tools

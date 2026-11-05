@@ -1,1655 +1,594 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmol Sharma | Digital Virtuoso Services — Career Expert</title>
-    <meta name="description" content="Anmol Sharma — Career Services Expert specializing in Resume Writing, LinkedIn Optimization, Interview Preparation and Career Coaching. 5/5 rated with 21 verified LinkedIn reviews.">
-    <meta property="og:title" content="Anmol Sharma | Digital Virtuoso Services">
-    <meta property="og:description" content="Transform your career with Anmol Sharma. Expert resume writing, LinkedIn optimization, interview prep & career coaching. 5.0/5 from 21 real clients.">
-    <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --navy: #0a1628;
-            --navy-light: #1a2a42;
-            --navy-dark: #050d18;
-            --gold: #d4a84b;
-            --gold-light: #e8c878;
-            --gold-dark: #b8923a;
-            --white: #ffffff;
-            --gray-100: #f8fafc;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--white);
-            color: var(--gray-800);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(10, 22, 40, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 0.75rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--gray-300);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--white);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--navy) !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600 !important;
-            transition: all 0.3s ease !important;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 168, 75, 0.4);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: var(--white);
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy) 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-shapes {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.05;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .shape-1 {
-            width: 600px;
-            height: 600px;
-            background: var(--gold);
-            top: -200px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--gold);
-            bottom: -100px;
-            left: -100px;
-            animation-delay: -5s;
-        }
-
-        .shape-3 {
-            width: 300px;
-            height: 300px;
-            background: var(--gold);
-            top: 50%;
-            left: 30%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 10px) scale(1.02); }
-        }
-
-        .hero-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(212, 168, 75, 0.15);
-            border: 1px solid rgba(212, 168, 75, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            color: var(--gold);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-badge i {
-            color: var(--gold);
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-            color: var(--gray-300);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--navy);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(212, 168, 75, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--white);
-        }
-
-        .trust-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .trust-stars {
-            display: flex;
-            gap: 0.25rem;
-        }
-
-        .trust-stars i {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        .trust-text {
-            color: var(--gray-300);
-            font-size: 0.95rem;
-        }
-
-        .trust-text strong {
-            color: var(--white);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 0;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--gray-500);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--gray-100);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 60px rgba(10, 22, 40, 0.2);
-        }
-
-        .about-image-wrapper::before {
-            display: none;
-        }
-
-        .about-image-wrapper img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            object-position: top;
-            border-radius: 20px;
-            display: block;
-        }
-
-        .about-placeholder {
-            aspect-ratio: 4/5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-placeholder i {
-            font-size: 5rem;
-            color: var(--gold);
-            opacity: 0.8;
-        }
-
-        .about-image-accent {
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 150px;
-            height: 150px;
-            background: var(--gold);
-            border-radius: 20px;
-            z-index: 0;
-        }
-
-        .about-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-content p {
-            color: var(--gray-600);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .about-stat {
-            text-align: center;
-        }
-
-        .about-stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .about-stat-label {
-            font-size: 0.875rem;
-            color: var(--gray-500);
-        }
-
-        /* Services Section */
-        .services {
-            background: var(--white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            border: 1px solid var(--gray-200);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(10, 22, 40, 0.15);
-            border-color: transparent;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.75rem;
-            color: var(--gold);
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--navy);
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--gray-500);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Stats Section */
-        .stats {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: var(--gold);
-            opacity: 0.03;
-            border-radius: 50%;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(212, 168, 75, 0.15);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .stat-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-value span {
-            color: var(--gold);
-        }
-
-        .stat-label {
-            color: var(--gray-300);
-            font-size: 1rem;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: var(--gray-100);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 5rem;
-            color: var(--gold);
-            opacity: 0.2;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial-stars {
-            display: flex;
-            gap: 0.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .testimonial-stars i {
-            color: var(--gold);
-            font-size: 1rem;
-        }
-
-        .testimonial-text {
-            color: var(--gray-600);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .testimonial-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-info h4 {
-            font-weight: 600;
-            color: var(--navy);
-            font-size: 1rem;
-        }
-
-        .testimonial-info p {
-            color: var(--gray-400);
-            font-size: 0.875rem;
-        }
-
-        /* LinkedIn Section */
-        .linkedin {
-            background: var(--white);
-            text-align: center;
-        }
-
-        .linkedin-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .linkedin-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 3rem;
-            color: var(--white);
-            box-shadow: 0 15px 40px rgba(0, 119, 181, 0.3);
-        }
-
-        .linkedin h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .linkedin p {
-            color: var(--gray-500);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn-linkedin {
-            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-        }
-
-        .btn-linkedin:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 119, 181, 0.4);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--gold);
-            opacity: 0.03;
-            border-radius: 50%;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: start;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-info h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .contact-info > p {
-            color: var(--gray-300);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-item-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(212, 168, 75, 0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 1.25rem;
-        }
-
-        .contact-item-text {
-            color: var(--gray-300);
-        }
-
-        .contact-item-text strong {
-            color: var(--white);
-            display: block;
-        }
-
-        .contact-form {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: var(--gray-100);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: var(--white);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--navy);
-            padding: 1.25rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 168, 75, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--navy-dark);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand h3 span {
-            color: var(--gold);
-        }
-
-        .footer-brand p {
-            color: var(--gray-400);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .footer-links h4 {
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--gray-400);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icon {
-            width: 42px;
-            height: 42px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-300);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-icon:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 2rem;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            color: var(--gray-500);
-            font-size: 0.9rem;
-        }
-
-        .whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-    z-index: 9999;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-/* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                order: -1;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--navy);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                transition: right 0.4s ease;
-                gap: 1.5rem;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .hamburger {
-                display: flex;
-                z-index: 1001;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-
-            .stat-value {
-                font-size: 2.5rem;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-social {
-                justify-content: center;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .trust-badge {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content {
-                padding: 7rem 1.5rem 3rem;
-            }
-
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .contact-form {
-                padding: 2rem 1.5rem;
-            }
-
-            .stat-item {
-                padding: 1rem;
-            }
-
-            .about-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV Writing, LinkedIn & Interview Coaching | Digital Virtuoso Services</title>
+  <meta name="description" content="One-to-one CV writing, LinkedIn profile optimisation and interview coaching for professionals stepping into bigger roles. Rated 5.0 across 21 LinkedIn reviews. Book a free call on WhatsApp.">
+  <link rel="canonical" href="https://anmol5648815-commits.github.io/">
+  <meta name="theme-color" content="#EDEBE6">
+  <meta name="color-scheme" content="light">
+  <meta name="author" content="Anmol Sharma">
+
+  <!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Digital Virtuoso Services">
+  <meta property="og:url" content="https://anmol5648815-commits.github.io/">
+  <meta property="og:title" content="Your experience, written for the job you want next">
+  <meta property="og:description" content="CV writing, LinkedIn profiles and interview coaching by Anmol Sharma. Rated 5.0 across 21 LinkedIn reviews.">
+  <meta property="og:image" content="https://anmol5648815-commits.github.io/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Digital Virtuoso Services: CV writing, LinkedIn and interview coaching">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CipherPulse568">
+  <meta name="twitter:title" content="Your experience, written for the job you want next">
+  <meta name="twitter:description" content="CV writing, LinkedIn profiles and interview coaching by Anmol Sharma.">
+  <meta name="twitter:image" content="https://anmol5648815-commits.github.io/assets/img/og.jpg">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-tight-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/covers/cvli.webp" type="image/webp">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.remove("no-js")</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://anmol5648815-commits.github.io/#business",
+        "name": "Digital Virtuoso Services",
+        "alternateName": "DVS",
+        "url": "https://anmol5648815-commits.github.io/",
+        "image": "https://anmol5648815-commits.github.io/assets/img/og.jpg",
+        "logo": "https://anmol5648815-commits.github.io/apple-touch-icon.png",
+        "description": "One-to-one CV writing, LinkedIn profile optimisation, interview coaching and career coaching.",
+        "email": "anmol.digitalvirtuoso@gmail.com",
+        "telephone": "+91-97527-98192",
+        "areaServed": "Worldwide",
+        "founder": { "@id": "https://anmol5648815-commits.github.io/#anmol" },
+        "sameAs": [
+          "https://www.linkedin.com/in/anmol-sharma-a29669167/",
+          "https://twitter.com/CipherPulse568",
+          "https://instagram.com/scri.ptsorcery/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Career services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CV and resume writing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LinkedIn profile optimisation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interview coaching" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Career development coaching" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cover letters and professional bios" } }
+          ]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://anmol5648815-commits.github.io/#anmol",
+        "name": "Anmol Sharma",
+        "jobTitle": "Founder, Digital Virtuoso Services",
+        "image": "https://anmol5648815-commits.github.io/assets/img/anmol-800.jpg",
+        "worksFor": { "@id": "https://anmol5648815-commits.github.io/#business" },
+        "sameAs": [
+          "https://www.linkedin.com/in/anmol-sharma-a29669167/",
+          "https://github.com/anmol5648815-commits"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://anmol5648815-commits.github.io/#website",
+        "url": "https://anmol5648815-commits.github.io/",
+        "name": "Digital Virtuoso Services",
+        "publisher": { "@id": "https://anmol5648815-commits.github.io/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you work with clients outside India?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything happens remotely over WhatsApp, email and video calls, so I work with professionals anywhere in the world." }
+          },
+          {
+            "@type": "Question",
+            "name": "Will my CV get through applicant tracking systems (ATS)?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Your CV is written in a clean, single-column format that ATS software reads correctly, using the language from the roles you are targeting." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you tailor my CV to a specific job?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Send the job description with your brief and the CV is written around what that role is asking for." }
+          },
+          {
+            "@type": "Question",
+            "name": "What do you need from me to get started?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Your current CV (or LinkedIn profile), the roles you want next, and about an hour for the questionnaire and deep-dive call." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-bolt"></i>
-                Digital Virtuoso<span> Services</span>
-            </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#testimonials">Reviews</a>
-                <a href="#linkedin">LinkedIn</a>
-                <a href="#contact" class="nav-cta">Let's Talk</a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <a class="skip lbl box" href="#main">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></symbol>
+  </svg>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+  <!-- Top bar -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <button class="nav__toggle lbl box" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav__links" id="nav-links" aria-label="Main">
+        <a class="lbl" href="#services">Services</a>
+        <a class="lbl" href="#packages">Packages</a>
+        <a class="lbl" href="#process">Process</a>
+        <a class="lbl" href="#reviews">Reviews</a>
+        <a class="lbl" href="#faq">FAQ</a>
+      </nav>
+      <a class="logo" href="#top" aria-label="Digital Virtuoso Services, back to top">
+        <span class="logo__mark">Digital Virtuoso</span>
+        <span class="logo__sub">Services</span>
+      </a>
+      <a class="lbl box box--cobalt nav__cta" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener"><span class="nav__cta-long">Book a free call</span><span class="nav__cta-short">Book</span></a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO: the career file shelf -->
+    <section class="hero" aria-label="Services">
+      <nav class="tabs" id="tabs" aria-label="Service types">
+        <span class="tabs__ind" id="tabs-ind" aria-hidden="true"></span>
+        <button class="tab lbl" type="button" data-cat="all">All</button>
+        <button class="tab lbl" type="button" data-cat="Packages">Packages</button>
+        <button class="tab lbl" type="button" data-cat="Coaching">Coaching</button>
+        <button class="tab lbl" type="button" data-cat="Writing">Writing</button>
+      </nav>
+
+      <section class="shelf" id="shelf" aria-label="Services shelf">
+        <div class="stage" id="stage"></div>
+        <img class="shelf__fallback" src="assets/img/covers/cvli.webp" width="474" height="900" alt="Cover of the CV + LinkedIn package">
+      </section>
+
+      <button class="play" id="play" type="button" aria-label="Open this service">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"/></svg>
+      </button>
+
+      <div class="caption" id="caption" aria-live="polite">
+        <div class="mask mask--title"><span>CV + LinkedIn</span></div>
+        <div class="mask mask--sub lbl"><span>Recommended package / CV + LI</span></div>
+        <div class="mask mask--meta"><span>Be found, not just apply</span></div>
+      </div>
+
+      <button class="arrow arrow--prev" id="prev" type="button" aria-label="Previous service">
+        <svg viewBox="0 0 18 10" aria-hidden="true"><path d="M5 1 L1 5 L5 9 M1 5 H17" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+      <button class="arrow arrow--next" id="next" type="button" aria-label="Next service">
+        <svg viewBox="0 0 18 10" aria-hidden="true"><path d="M13 1 L17 5 L13 9 M17 5 H1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+
+      <div class="hero__hint mask" id="hero-hint" aria-hidden="true">
+        <p class="lbl"><span class="hint--fine">Drag to browse / Click the cover to open</span><span class="hint--touch">Swipe to browse / Tap the cover to open</span></p>
+      </div>
+
+      <div class="hero__foot">
+        <div class="hero__intro">
+          <h1 class="hero__title">Your experience, written for the job you want next.</h1>
+          <p class="lbl hero__by">CV writing, LinkedIn and interview coaching by Anmol Sharma</p>
         </div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-star"></i>
-                <span>5.0/5 Rated • 21 Verified LinkedIn Reviews</span>
-            </div>
-            <h1>Land Your Dream Job.<br><span>With Anmol Sharma.</span></h1>
-            <p class="hero-subtitle">Want to land more interviews? I specialize in crafting job-winning resumes, compelling cover letters, and optimized LinkedIn profiles that pass ATS filters and impress recruiters. Let's turn your experience into opportunities — and get you hired faster.</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">
-                    <i class="fas fa-compass"></i>
-                    Explore Services
-                </a>
-                <a href="#testimonials" class="btn btn-secondary">
-                    <i class="fas fa-comments"></i>
-                    See Reviews
-                </a>
-            </div>
-            <div class="trust-badge">
-                <div class="trust-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <span class="trust-text"><strong>5.0/5 Rated</strong> | 21 Verified LinkedIn Reviews</span>
-            </div>
-        </div>
+        <a class="lbl hero__proof" href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> Rated 5.0 / 21 reviews on LinkedIn</a>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image fade-in">
-                    <div class="about-image-wrapper">
-                        <img src="dp.jpg" alt="Anmol Sharma - Career Services Expert" style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block; border-radius:20px;" loading="lazy">
-                    </div>
-                    <div class="about-image-accent"></div>
-                </div>
-                <div class="about-content fade-in">
-                    <span class="section-label">About Me</span>
-                    <h2>Hi, I'm Anmol Sharma</h2>
-                    <p>I'm a passionate Career Services Expert and the founder of Digital Virtuoso Services, dedicated to helping professionals at every stage of their journey. I specialize in crafting job-winning resumes, compelling cover letters, and optimized LinkedIn profiles that pass ATS filters and impress recruiters.</p>
-                    <p>From resume reviews to ghostwriting and content strategy, I help you present your skills with clarity and confidence. With 21 verified 5-star reviews on LinkedIn, I've had the privilege of guiding professionals from companies like JPMorgan Chase, and across industries from tech to finance.</p>
-                    <p>My approach combines strategic thinking with genuine care. I don't just optimize profiles — I help you discover and communicate your unique professional story.</p>
-                    <div class="about-stats">
-                        <div class="about-stat">
-                            <div class="about-stat-value">150+</div>
-                            <div class="about-stat-label">Happy Clients</div>
-                        </div>
-                        <div class="about-stat">
-                            <div class="about-stat-value">5.0</div>
-                            <div class="about-stat-label">LinkedIn Rating</div>
-                        </div>
-                        <div class="about-stat">
-                            <div class="about-stat-value">5+</div>
-                            <div class="about-stat-label">Years Experience</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- WHO IT'S FOR: dark printed band, the page's pattern interrupt -->
+    <section class="sec fit band" aria-labelledby="fit-title">
+      <div class="band__media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 767px)" srcset="assets/img/bands/standout-portrait.webp" type="image/webp">
+          <source srcset="assets/img/bands/standout-1280.webp 1280w, assets/img/bands/standout-1600.webp 1600w, assets/img/bands/standout-2000.webp 2000w" sizes="100vw" type="image/webp">
+          <img class="band__img" src="assets/img/bands/standout-1280.webp" width="1280" height="854" alt="" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="wrap band__inner">
+        <p class="lbl box band__kicker">Why good candidates get missed</p>
+        <h2 id="fit-title" class="h2 h2--md band__title">Most CVs list duties. Hiring managers are looking for evidence.</h2>
+        <div class="fit__body">
+          <p class="lede">Strong candidates get filtered out because their CV reads like a job description. I find the decisions, numbers and outcomes behind your work and put them where a recruiter will see them in the first six seconds.</p>
+          <ul class="fit__list">
+            <li><span class="lbl box">Step up</span> Managers and senior specialists going for their next role</li>
+            <li><span class="lbl box">Switch</span> Career switchers who need their experience translated for a new field</li>
+            <li><span class="lbl box">Abroad</span> Professionals applying to companies in another country</li>
+            <li><span class="lbl box">Refresh</span> Anyone whose LinkedIn hasn’t kept up with their career</li>
+          </ul>
+          <a class="btn btn--paper band__cta" href="#services">Find the right service</a>
         </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-label">Services</span>
-                <h2 class="section-title">How I Can Help You Succeed</h2>
-                <p class="section-subtitle">Comprehensive career services designed to elevate your professional presence and accelerate your growth.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>Resume Writing</h3>
-                    <p>Craft a compelling, ATS-optimized resume that highlights your achievements and gets you noticed by recruiters.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Interview Preparation</h3>
-                    <p>Master the art of interviewing with personalized coaching, mock sessions, and proven strategies to ace any question.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Career Development Coaching</h3>
-                    <p>Get clarity on your career path, set achievable goals, and create a roadmap for long-term professional success.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn Profile Optimisation</h3>
-                    <p>Transform your LinkedIn into a powerful personal brand that attracts opportunities and expands your network.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-pen-nib"></i>
-                    </div>
-                    <h3>Ghostwriting & Copywriting</h3>
-                    <p>From cover letters to professional bios and content strategy — I write with your voice to help you stand out authentically.</p>
-                </div>
-            </div>
+    <!-- SERVICES CATALOGUE -->
+    <section class="sec services" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="services-title" class="h2">What I do</h2>
+          <p class="lbl box">5 services</p>
         </div>
+        <p class="lede sec-lede">Every piece is written by me, from a conversation with you. No templates, no AI-generated filler.</p>
+        <ul class="cat">
+          <li class="cat__row">
+            <h3 class="cat__name">CV &amp; resume writing</h3>
+            <p class="cat__desc">A rewritten CV built around your achievements, formatted to read cleanly in applicant tracking systems and to a human in a hurry.</p>
+            <p class="cat__out lbl">Word + PDF files</p>
+            <button class="cat__open lbl box" type="button" data-open="cv" aria-label="Open file: CV &amp; resume writing">Open file</button>
+          </li>
+          <li class="cat__row">
+            <h3 class="cat__name">LinkedIn profile optimisation</h3>
+            <p class="cat__desc">Headline, About section and experience rewritten so recruiters searching for your next role actually find you, and want to message you.</p>
+            <p class="cat__out lbl">Copy ready to paste</p>
+            <button class="cat__open lbl box" type="button" data-open="cvli" aria-label="Open file: LinkedIn profile optimisation">Open file</button>
+          </li>
+          <li class="cat__row">
+            <h3 class="cat__name">Interview coaching</h3>
+            <p class="cat__desc">Mock interviews for your target role with honest feedback. We build your stories so you can answer the hard questions without rehearsing a script.</p>
+            <p class="cat__out lbl">Live video sessions</p>
+            <button class="cat__open lbl box" type="button" data-open="interview" aria-label="Open file: Interview coaching">Open file</button>
+          </li>
+          <li class="cat__row">
+            <h3 class="cat__name">Career development coaching</h3>
+            <p class="cat__desc">For when the question is what to apply for, not how. We get clear on direction and build a plan you can act on this month.</p>
+            <p class="cat__out lbl">Live video sessions</p>
+            <button class="cat__open lbl box" type="button" data-open="career" aria-label="Open file: Career development coaching">Open file</button>
+          </li>
+          <li class="cat__row">
+            <h3 class="cat__name">Cover letters &amp; professional bios</h3>
+            <p class="cat__desc">Cover letters, speaker bios and profile copy written in your voice, for when you need to introduce yourself well in writing.</p>
+            <p class="cat__out lbl">Word + PDF files</p>
+            <button class="cat__open lbl box" type="button" data-open="letters" aria-label="Open file: Cover letters &amp; professional bios">Open file</button>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats" id="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-value" data-target="150">0<span>+</span></div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="stat-value" data-target="5">0<span>/5</span></div>
-                    <div class="stat-label">Average Rating</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="stat-value" data-target="100">0<span>%</span></div>
-                    <div class="stat-label">Satisfaction Rate</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="stat-value" data-target="5">0<span>+</span></div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
+    <!-- PACKAGES -->
+    <section class="sec packages" id="packages" aria-labelledby="packages-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="packages-title" class="h2">Packages</h2>
+          <p class="lbl box">Fixed prices</p>
         </div>
+        <p class="lede sec-lede">Agreed before we start. Not sure which fits? Ask on the free call.</p>
+        <div class="tiers">
+          <article class="tier">
+            <p class="tier__tag lbl">CV</p>
+            <h3 class="tier__name">CV Rewrite</h3>
+            <p class="tier__for">For an active job search where the CV is the bottleneck.</p>
+            <p class="tier__price tier__price--ask">Message me for pricing</p>
+            <ul class="tier__list">
+              <li>Deep-dive call about your career and target roles</li>
+              <li>CV rewritten from scratch, ATS-friendly</li>
+              <li>Revisions included</li>
+              <li>First draft in 2 working days</li>
+            </ul>
+            <a class="btn btn--line tier__cta" data-wa="Hi Anmol, I'm interested in the CV Rewrite package." href="https://wa.me/919752798192" target="_blank" rel="noopener">Ask about CV Rewrite</a>
+          </article>
+
+          <article class="tier tier--featured">
+            <p class="tier__tag lbl"><span>CV + LI</span><span class="tier__badge">Recommended</span></p>
+            <h3 class="tier__name">CV + LinkedIn</h3>
+            <p class="tier__for">For being found by recruiters, not just applying.</p>
+            <p class="tier__price tier__price--ask">Message me for pricing</p>
+            <ul class="tier__list">
+              <li>Everything in CV Rewrite</li>
+              <li>LinkedIn headline, About and experience rewritten</li>
+              <li>Keyword plan for the roles you want to be found for</li>
+              <li>Profile checklist: photo, banner, featured section</li>
+            </ul>
+            <a class="btn btn--cobalt tier__cta" data-wa="Hi Anmol, I'm interested in the CV + LinkedIn package." href="https://wa.me/919752798192" target="_blank" rel="noopener">Ask about CV + LinkedIn</a>
+          </article>
+
+          <article class="tier">
+            <p class="tier__tag lbl">PRO</p>
+            <h3 class="tier__name">Career Accelerator</h3>
+            <p class="tier__for">For senior moves where the interview decides it.</p>
+            <p class="tier__price tier__price--ask">Message me for pricing</p>
+            <ul class="tier__list">
+              <li>Everything in CV + LinkedIn</li>
+              <li>A cover letter tailored to your top-choice role</li>
+              <li>Mock interview sessions with feedback</li>
+              <li>WhatsApp support during your search</li>
+            </ul>
+            <a class="btn btn--line tier__cta" data-wa="Hi Anmol, I'm interested in the Career Accelerator package." href="https://wa.me/919752798192" target="_blank" rel="noopener">Ask about Career Accelerator</a>
+          </article>
+        </div>
+        <p class="packages__note">Need just one thing, like a single mock interview or a cover letter? <a data-wa="Hi Anmol, I need help with something specific:" href="https://wa.me/919752798192" target="_blank" rel="noopener">Message me</a> and I’ll quote it.</p>
+      </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-label">Testimonials</span>
-                <h2 class="section-title">What My Clients Say</h2>
-                <p class="section-subtitle">Real feedback from professionals who transformed their careers with my guidance.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Really grateful to Anmol for helping me with my resume. He provided valuable suggestions, improved the overall structure, and made it much more impactful and professional."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">AS</div>
-                        <div class="testimonial-info">
-                            <h4>Anurag Shrivastava</h4>
-                            <p>Assistant Manager, Risk Advisory</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"It was truly a pleasure working with Anmol. The service provided was exceptional. I genuinely appreciate the effort and professionalism."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">SK</div>
-                        <div class="testimonial-info">
-                            <h4>Sidharth Kumar</h4>
-                            <p>Software Engineer II, JPMorgan Chase & Co.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Very professional and very prompt. He understood the requirements well and gave a great output."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MA</div>
-                        <div class="testimonial-info">
-                            <h4>Manav Agarwal</h4>
-                            <p>Product Leader, Web3 & AI</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- PROCESS -->
+    <section class="sec process" id="process" aria-labelledby="process-title">
+      <div class="wrap process__grid">
+        <div class="head--side">
+          <h2 id="process-title" class="h2">How it works</h2>
+          <p class="lede">From first message to final files. You’ll always know what happens next.</p>
         </div>
+        <ol class="steps" id="steps">
+          <li class="step">
+            <h3>Free call</h3>
+            <p>A short chat on WhatsApp or video about where you are and where you want to go. If I’m not the right fit, I’ll tell you.</p>
+          </li>
+          <li class="step">
+            <h3>Questionnaire and deep-dive</h3>
+            <p>You fill in a short questionnaire, then we talk through your work in detail. This is where the numbers and stories come from.</p>
+          </li>
+          <li class="step">
+            <h3>First draft</h3>
+            <p>You receive your first draft within 2 working days, with notes on the choices I made.</p>
+          </li>
+          <li class="step">
+            <h3>Revisions</h3>
+            <p>Tell me what doesn’t sound like you. We refine it until you’re proud to send it.</p>
+          </li>
+          <li class="step">
+            <h3>Final files</h3>
+            <p>Your CV in Word and PDF, plus LinkedIn copy ready to paste. Then, if you chose coaching, we prepare for interviews.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- LinkedIn Section -->
-    <section class="linkedin" id="linkedin">
-        <div class="container">
-            <div class="linkedin-content fade-in">
-                <div class="linkedin-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </div>
-                <h2>Connect With Me on LinkedIn</h2>
-                <p>I have 21 verified 5-star reviews on my LinkedIn Services page. I regularly share career tips, resume advice, and industry insights. Visit my profile to see client success stories and connect with me directly.</p>
-                <a href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" class="btn btn-linkedin">
-                    <i class="fab fa-linkedin"></i>
-                    Connect on LinkedIn
-                </a>
-            </div>
+    <!-- REVIEWS -->
+    <section class="sec reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="reviews-title" class="h2">What clients say</h2>
+          <a class="lbl box" href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" rel="noopener">21 reviews on LinkedIn</a>
         </div>
+        <div class="quotes">
+          <figure class="quote quote--lead">
+            <blockquote>“Really grateful to Anmol for helping me with my resume. He provided valuable suggestions, improved the overall structure, and made it much more impactful and professional.”</blockquote>
+            <figcaption><strong class="lbl">Anurag Shrivastava</strong><span>Assistant Manager, Risk Advisory</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>“It was truly a pleasure working with Anmol. The service provided was exceptional. I genuinely appreciate the effort and professionalism.”</blockquote>
+            <figcaption><strong class="lbl">Sidharth Kumar</strong><span>Software Engineer II, JPMorgan Chase &amp; Co.</span></figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote>“Very professional and very prompt. He understood the requirements well and gave a great output.”</blockquote>
+            <figcaption><strong class="lbl">Manav Agarwal</strong><span>Product Leader, Web3 &amp; AI</span></figcaption>
+          </figure>
+        </div>
+        <div class="reviews__foot">
+          <p class="reviews__ask">Ready to work on yours?</p>
+          <a class="btn btn--cobalt" data-wa="Hi Anmol, I read your reviews and I'd like to book a free call." href="https://wa.me/919752798192" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Book a free call on WhatsApp</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h2>Ready to Take the Next Step?</h2>
-                    <p>Let's discuss how I can help you achieve your career goals. Book a free consultation and start your transformation today.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-item-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <strong>Email</strong>
-                                anmol.digitalvirtuoso@gmail.com
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-item-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <strong>Location</strong>
-                                Available Worldwide (Remote)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <form id="contactForm" action="https://formspree.io/f/mkovywaw" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="resume">Resume Writing</option>
-                                <option value="interview">Interview Preparation</option>
-                                <option value="coaching">Career Development Coaching</option>
-                                <option value="linkedin">LinkedIn Profile Optimisation</option>
-                                <option value="multiple">Multiple Services</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" placeholder="Tell me about your career goals and how I can help..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-submit">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
+    <!-- ABOUT -->
+    <section class="sec about" id="about" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <picture class="about__photo">
+          <!-- TODO: a professional headshot (plain background, natural light) will lift trust for senior clients -->
+          <source type="image/webp" srcset="assets/img/anmol-480.webp 480w, assets/img/anmol-800.webp 800w" sizes="(min-width: 900px) 380px, 80vw">
+          <img src="assets/img/anmol-800.jpg" width="800" height="1000" alt="Anmol Sharma, founder of Digital Virtuoso Services" loading="lazy" decoding="async">
+        </picture>
+        <div class="about__copy">
+          <p class="lbl box">About</p>
+          <h2 id="about-title" class="h2">Hi, I’m Anmol.</h2>
+          <p class="lede">I started Digital Virtuoso Services to give professionals the kind of attention a template can’t: someone who asks the follow-up question, finds the number you forgot to mention, and writes it the way a hiring manager wants to read it.</p>
+          <p class="lede">I’ve worked with people from first-time managers to engineers at firms like JPMorgan Chase, across tech, finance and consulting. Every CV, profile and coaching session is done by me personally.</p>
+          <!-- TODO: confirm these figures are current before publishing -->
+          <dl class="facts">
+            <div><dt class="lbl">LinkedIn rating</dt><dd>5.0</dd></div>
+            <div><dt class="lbl">Verified reviews</dt><dd>21</dd></div>
+            <div><dt class="lbl">Clients helped</dt><dd>150+</dd></div>
+            <div><dt class="lbl">Years in practice</dt><dd>5+</dd></div>
+          </dl>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Digital Virtuoso<span> Services</span></h3>
-                    <p>Empowering professionals to achieve their career aspirations through personalized guidance, strategic positioning, and unwavering support.</p>
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://twitter.com/CipherPulse568" target="_blank" class="social-icon" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://instagram.com/scri.ptsorcery/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/anmol5648815-commits" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Resume Writing</a></li>
-                        <li><a href="#services">Interview Prep</a></li>
-                        <li><a href="#services">Career Coaching</a></li>
-                        <li><a href="#services">LinkedIn Optimisation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
-                        
-                        <li><a href="#">Book a Call</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Digital Virtuoso Services by Anmol Sharma. All rights reserved.</p>
-            </div>
+    <!-- FAQ -->
+    <section class="sec faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq__grid">
+        <div class="head--side">
+          <h2 id="faq-title" class="h2">Questions</h2>
+          <p class="lede">Something else on your mind? <a data-wa="Hi Anmol, I have a question:" href="https://wa.me/919752798192" target="_blank" rel="noopener">Ask me on WhatsApp</a>.</p>
         </div>
-    </footer>
+        <div class="qa">
+          <details>
+            <summary>Do you work with clients outside India?</summary>
+            <p>Yes. Everything happens remotely over WhatsApp, email and video calls, so I work with professionals anywhere in the world.</p>
+          </details>
+          <details>
+            <summary>Will my CV get through applicant tracking systems (ATS)?</summary>
+            <p>Your CV is written in a clean, single-column format that ATS software reads correctly, using the language from the roles you’re targeting.</p>
+          </details>
+          <details>
+            <summary>How long does it take?</summary>
+            <p>The first draft arrives within 2 working days of our deep-dive call. Revisions usually take a day or two each.</p>
+          </details>
+          <details>
+            <summary>Can you tailor my CV to a specific job?</summary>
+            <p>Yes. Send the job description with your brief and the CV is written around what that role is asking for.</p>
+          </details>
+          <details>
+            <summary>How do I pay?</summary>
+            <p>Payment is made upfront, before work begins. Clients in India can pay by UPI, and international clients by PayPal. You’ll receive an invoice first and a confirmation once payment is received.</p>
+          </details>
+          <details>
+            <summary>What do you need from me to get started?</summary>
+            <p>Your current CV (or LinkedIn profile), the roles you want next, and about an hour for the questionnaire and deep-dive call.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+    <!-- CONTACT: the finale band. Through the lenses everything is sharp:
+         the booking button sits on the bridge, where the eye lands first. -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="sec band band--finale">
+        <div class="band__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 767px)" srcset="assets/img/bands/focus-mobile.webp" type="image/webp">
+            <source srcset="assets/img/bands/focus-1280.webp 1280w, assets/img/bands/focus-1600.webp 1600w, assets/img/bands/focus-2000.webp 2000w" sizes="100vw" type="image/webp">
+            <img class="band__img" src="assets/img/bands/focus-1280.webp" width="1280" height="960" alt="" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="wrap band__inner finale__inner">
+          <p class="lbl box band__kicker">Free call / WhatsApp</p>
+          <h2 id="contact-title" class="h2 h2--xl finale__title">Ready for the next role? Let’s bring it into focus.</h2>
+          <p class="lede finale__lede">Tell me where you are and where you want to go. The quickest way to reach me is WhatsApp, and I reply within 24 hours.</p>
+          <a class="btn btn--paper btn--large finale__cta" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Book a free call on WhatsApp</a>
+        </div>
+      </div>
+      <div class="wrap contact__formwrap">
+          <form class="form" id="contact-form" action="https://formspree.io/f/mkovywaw" method="POST" novalidate>
+            <h3 class="form__title">Prefer email? Send a message.</h3>
+            <ul class="contact__alt">
+              <li><span class="lbl">Email</span> <a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
+              <li><span class="lbl">Where</span> Working with clients worldwide, remotely</li>
+            </ul>
+            <p class="form__hint">Fields marked <span aria-hidden="true">*</span><span class="sr">with an asterisk</span> are required.</p>
+            <div class="field">
+              <label class="lbl" for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="field__error" id="f-name-err" data-msg="Enter your name so I know who to reply to." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+              <p class="field__error" id="f-email-err" data-msg="Enter an email address like name@example.com." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-service">What do you need? <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-service" name="service" required aria-describedby="f-service-err">
+                <option value="">Choose one</option>
+                <option>CV Rewrite</option>
+                <option>CV + LinkedIn</option>
+                <option>Career Accelerator</option>
+                <option>Interview coaching only</option>
+                <option>Career coaching</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__error" id="f-service-err" data-msg="Choose the service you’re interested in." hidden></p>
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-role">Role you’re aiming for <span class="opt">(optional)</span></label>
+              <input id="f-role" name="target_role" type="text" autocomplete="organization-title" placeholder="e.g. Senior Product Manager">
+            </div>
+            <div class="field">
+              <label class="lbl" for="f-msg">Message <span class="opt">(optional)</span></label>
+              <textarea id="f-msg" name="message" rows="4"></textarea>
+            </div>
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn--line form__submit" type="submit">Send message</button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+      </div>
+    </section>
+  </main>
 
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+  <footer class="foot">
+    <div class="wrap foot__top">
+      <a class="foot__mark" href="#top" aria-label="Digital Virtuoso Services, back to top">Digital Virtuoso <span>Services</span></a>
+      <p class="foot__line">CV writing, LinkedIn and interview coaching by Anmol Sharma, for professionals stepping into bigger roles.</p>
+    </div>
+    <div class="wrap foot__cols">
+      <nav class="foot__col" aria-label="Services">
+        <p class="lbl foot__head">Open a file</p>
+        <ul>
+          <li><button type="button" data-open="cv">CV Rewrite</button></li>
+          <li><button type="button" data-open="cvli">CV + LinkedIn</button></li>
+          <li><button type="button" data-open="accel">Career Accelerator</button></li>
+          <li><button type="button" data-open="interview">Interview Coaching</button></li>
+          <li><button type="button" data-open="career">Career Coaching</button></li>
+          <li><button type="button" data-open="letters">Cover Letters &amp; Bios</button></li>
+        </ul>
+      </nav>
+      <div class="foot__col">
+        <p class="lbl foot__head">Contact</p>
+        <ul>
+          <li><a data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
+          <li class="foot__note">Replies within 24 hours. Working with clients worldwide, remotely.</li>
+        </ul>
+      </div>
+      <nav class="foot__col" aria-label="Social">
+        <p class="lbl foot__head">Elsewhere</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com/CipherPulse568" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://instagram.com/scri.ptsorcery/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://github.com/anmol5648815-commits" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap foot__base">
+      <p class="lbl">© <span id="year">2026</span> Digital Virtuoso Services</p>
+      <a class="lbl foot__top-link" href="#top">Back to top</a>
+    </div>
+  </footer>
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+  <!-- Detail sheet: grows out of a cover -->
+  <div class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="d-title" hidden>
+    <button class="detail__close lbl box" id="d-close" type="button">Close</button>
+    <div class="detail__logo logo" aria-hidden="true"><span class="logo__mark">Digital Virtuoso</span><span class="logo__sub">Services</span></div>
+    <div class="detail__grid">
+      <div class="detail__text">
+        <div class="mask"><p class="lbl detail__sub" id="d-sub"></p></div>
+        <div class="mask"><h2 class="detail__title" id="d-title"></h2></div>
+        <div class="mask"><p class="lbl detail__meta" id="d-meta"></p></div>
+        <div class="mask"><p class="detail__syn" id="d-syn"></p></div>
+        <div class="mask"><ul class="detail__list" id="d-list"></ul></div>
+        <div class="mask"><p class="detail__credit" id="d-credit"></p></div>
+        <div class="mask detail__actions">
+          <a class="btn btn--cobalt" id="d-wa" href="https://wa.me/919752798192" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Book a free call on WhatsApp</a>
+          <a class="btn btn--line" id="d-pk" href="#packages">Compare packages</a>
+        </div>
+      </div>
+      <div class="detail__poster">
+        <svg viewBox="0 0 474 900" aria-hidden="true">
+          <defs>
+            <filter id="ink" x="-30%" y="-30%" width="160%" height="160%">
+              <feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="120" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <mask id="inkmask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="874" height="1300">
+              <g filter="url(#ink)" fill="#fff" id="blots">
+                <circle cx="150" cy="330" r="0"/><circle cx="340" cy="600" r="0"/><circle cx="250" cy="120" r="0"/>
+                <circle cx="90" cy="760" r="0"/><circle cx="400" cy="250" r="0"/><circle cx="260" cy="860" r="0"/>
+                <circle cx="230" cy="470" r="0"/>
+              </g>
+            </mask>
+            <clipPath id="posterclip"><rect width="474" height="900" rx="3"/></clipPath>
+          </defs>
+          <g clip-path="url(#posterclip)" mask="url(#inkmask)">
+            <image id="d-img" width="474" height="900" preserveAspectRatio="none" href=""/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+  <!-- Mobile booking bar -->
+  <div class="dock" id="dock" aria-hidden="true">
+    <a class="btn btn--cobalt" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener" tabindex="-1">Book a free call on WhatsApp</a>
+  </div>
 
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+  <div class="peek" id="peek" aria-hidden="true"><img alt="" width="474" height="900" decoding="async"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span><span class="cursor__lbl">Open<br>file</span></div>
 
-        fadeElements.forEach(el => fadeObserver.observe(el));
-
-        // Counter animation
-        const statValues = document.querySelectorAll('.stat-value[data-target]');
-        
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.getAttribute('data-target'));
-                    const duration = 2000;
-                    const step = target / (duration / 16);
-                    let current = 0;
-                    
-                    const counter = setInterval(() => {
-                        current += step;
-                        if (current >= target) {
-                            entry.target.childNodes[0].textContent = target;
-                            clearInterval(counter);
-                        } else {
-                            entry.target.childNodes[0].textContent = Math.floor(current);
-                        }
-                    }, 16);
-                    
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statValues.forEach(stat => counterObserver.observe(stat));
-
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const response = await fetch('https://formspree.io/f/mkovywaw', {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) {
-                contactForm.innerHTML = '<div style="text-align:center; padding: 3rem 1rem;"><div style="font-size:3rem; margin-bottom:1rem;">✅</div><h3 style="color:#0a1628; font-size:1.5rem; margin-bottom:0.5rem;">Message Sent!</h3><p style="color:#64748b;">Thank you! I will get back to you within 24 hours.</p></div>';
-            } else {
-                alert('Oops! Something went wrong. Please email me directly at anmol.digitalvirtuoso@gmail.com');
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-
-    <a href="https://wa.me/919752798192" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/shelf.js" defer></script>
+  <script type="module" src="assets/js/motion.js"></script>
 </body>
 </html>
