@@ -214,6 +214,55 @@
       </div>
     </section>
 
+    <!-- THE EDIT: a CV entry rewritten as you scroll (illustrative, not a client's CV) -->
+    <section class="sec edit" id="edit" aria-labelledby="edit-title">
+      <div class="edit__track">
+        <div class="edit__stage">
+          <div class="wrap edit__grid">
+            <div class="edit__copy">
+              <p class="lbl box box--cobalt">Before / after</p>
+              <h2 id="edit-title" class="h2 h2--md">Same job. Same person. A stronger first six seconds.</h2>
+              <ol class="edit__steps" aria-label="How a line gets rewritten">
+                <li class="is-on"><span class="lbl">01</span> Question every line</li>
+                <li><span class="lbl">02</span> Rewrite it around the result</li>
+                <li><span class="lbl">03</span> Put the number where the eye lands</li>
+              </ol>
+              <p class="lbl edit__note">Illustrative example, not a client’s CV</p>
+            </div>
+
+            <figure class="edit__page" id="edit-page">
+              <figcaption class="sr">Example CV entry. Each original line is struck through and followed by its rewrite.</figcaption>
+              <div class="edit__head">
+                <p class="edit__name">Operations Manager</p>
+                <p class="lbl edit__role">Regional logistics firm / 2021 to present</p>
+                <p class="lbl edit__timer" aria-hidden="true"><span id="edit-time">0.0</span>s recruiter scan</p>
+              </div>
+              <ul class="edit__list">
+                <li class="edit__item">
+                  <del class="edit__before"><span class="sr">Before: </span><span class="edit__ink">Responsible for managing the warehouse team and daily operations.</span></del>
+                  <ins class="edit__after"><span class="sr">After: </span>Led a <mark>24-person</mark> warehouse team through the move to same-day dispatch.</ins>
+                  <span class="edit__nib" aria-hidden="true"></span>
+                  <span class="edit__margin" aria-hidden="true">so what?</span>
+                </li>
+                <li class="edit__item">
+                  <del class="edit__before"><span class="sr">Before: </span><span class="edit__ink">Worked on improving processes to reduce delays.</span></del>
+                  <ins class="edit__after"><span class="sr">After: </span>Cut late shipments from <mark>11% to 3%</mark> in eight months by redesigning the pick route.</ins>
+                  <span class="edit__nib" aria-hidden="true"></span>
+                  <span class="edit__margin" aria-hidden="true">how much?</span>
+                </li>
+                <li class="edit__item">
+                  <del class="edit__before"><span class="sr">Before: </span><span class="edit__ink">Helped with training new staff.</span></del>
+                  <ins class="edit__after"><span class="sr">After: </span>Built a two-week onboarding plan that <mark>halved</mark> new-starter errors.</ins>
+                  <span class="edit__nib" aria-hidden="true"></span>
+                  <span class="edit__margin" aria-hidden="true">what changed?</span>
+                </li>
+              </ul>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVICES CATALOGUE -->
     <section class="sec services" id="services" aria-labelledby="services-title">
       <div class="wrap">
@@ -590,6 +639,7 @@
 
   <script src="assets/js/site.js" defer></script>
   <script src="assets/js/shelf.js" defer></script>
+  <script src="assets/js/edit.js" defer></script>
   <script type="module" src="assets/js/motion.js"></script>
 </body>
 </html>

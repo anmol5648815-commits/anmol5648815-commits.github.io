@@ -760,3 +760,93 @@ html.is-locked { overflow: hidden; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .steps::after { transform: scaleY(1); }
 }
+
+/* ==========================================================================
+   The edit: a CV entry rewritten as you scroll (assets/js/edit.js)
+   Default (no JS / reduced motion): struck original above each rewrite.
+   .is-live: original and rewrite share one cell; the pen wipes one into the other.
+   ========================================================================== */
+.edit { --s: 1; --w: 1; --m: 1; }
+.edit__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.edit__copy .h2 { margin-top: 22px; }
+.edit__steps { margin-top: 36px; border-top: 1px solid var(--hair); }
+.edit__steps li { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--hair); font-size: 18px; color: var(--muted); transition: color var(--dur-3) var(--ease); }
+.edit__steps li .lbl { flex: none; width: 22px; }
+.edit__steps li::after { content: ""; margin-left: auto; width: 7px; height: 7px; background: var(--cobalt); transform: scale(0); transition: transform var(--dur-3) var(--ease); align-self: center; }
+.edit__steps li.is-on { color: var(--ink); }
+.edit__steps li.is-on::after { transform: scale(1); }
+.edit__note { margin-top: 22px; color: var(--muted); letter-spacing: .06em; }
+
+.edit__page {
+  position: relative; background: var(--sheet); border: 1px solid var(--hair);
+  padding: clamp(24px, 3.4vw, 48px) clamp(20px, 3vw, 44px) clamp(28px, 3.6vw, 52px);
+  box-shadow: 0 1px 0 rgba(20,20,20,.05), 0 30px 60px -38px rgba(20,20,20,.45);
+  transform: rotate(-.6deg);
+}
+.edit__page::before { /* binding line down the left, like a printed form */
+  content: ""; position: absolute; inset: 0 auto 0 clamp(10px, 1.4vw, 18px); width: 1px; background: rgba(201, 67, 42, .35);
+}
+.edit__head { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: end; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.edit__name { font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -.01em; }
+.edit__role { grid-column: 1; color: var(--muted); }
+.edit__timer { grid-column: 2; grid-row: 1 / span 2; align-self: start; color: var(--cobalt); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.edit__timer span { display: inline-block; min-width: 2.4ch; text-align: right; }
+
+.edit__list { margin-top: 8px; }
+.edit__item { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 92px; column-gap: 18px; padding: 18px 0 18px 18px; border-bottom: 1px solid var(--hair); font-size: clamp(17px, 1.45vw, 20px); line-height: 1.4; }
+.edit__item::before { content: ""; position: absolute; left: 0; top: calc(18px + .62em); width: 6px; height: 6px; background: var(--ink); }
+.edit__before, .edit__after { grid-column: 1; text-decoration: none; }
+.edit__before { color: var(--muted); }
+.edit__ink {
+  background: linear-gradient(var(--cobalt), var(--cobalt)) no-repeat 0 58% / calc(var(--s) * 100%) 1.5px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.edit__after { margin-top: 8px; color: var(--ink); }
+.edit__after mark {
+  color: inherit; padding: 0 .12em; margin: 0 -.06em;
+  background: linear-gradient(rgba(31, 63, 176, .16), rgba(31, 63, 176, .16)) no-repeat 0 100% / calc(var(--m) * 100%) 100%;
+  border-bottom: 2px solid var(--cobalt);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.edit__margin {
+  grid-column: 2; grid-row: 1; align-self: start;
+  font-style: italic; font-size: 17px; line-height: 1.15; color: var(--cobalt); transform: rotate(-4deg);
+  clip-path: inset(0 calc((1 - var(--s)) * 100%) 0 0);
+}
+.edit__nib { display: none; }
+
+/* Live mode: original and rewrite in one cell */
+.edit.is-live .edit__before, .edit.is-live .edit__after { grid-row: 1; margin-top: 0; }
+.edit.is-live .edit__before { clip-path: inset(0 0 0 calc(var(--w) * 100%)); }
+.edit.is-live .edit__after { clip-path: inset(-4px calc((1 - var(--w)) * 100%) -4px 0); }
+.edit.is-live .edit__item { --w: 0; --s: 0; }
+.edit.is-live .edit__after mark { --m: 0; }
+.edit.is-live .edit__nib {
+  display: block; position: absolute; top: 14px; bottom: 14px; width: 2px; background: var(--cobalt);
+  left: calc(18px + (100% - 18px - 92px - 18px) * var(--w)); transform: scaleY(0); transform-origin: 50% 50%;
+  transition: transform var(--dur-2) var(--ease);
+}
+.edit.is-live .edit__item.is-writing .edit__nib { transform: scaleY(1); }
+.edit.is-live .edit__margin { clip-path: inset(0 calc(max(1 - var(--s), var(--w)) * 100%) 0 0); }
+.edit__page.is-scanning .edit__timer { animation: edit-blink 1s steps(2, jump-none) infinite; }
+@keyframes edit-blink { 50% { color: var(--ink); } }
+
+/* Pinned stage on roomy screens: the page holds still while the edit plays */
+@media (min-width: 900px) and (min-height: 640px) {
+  .edit { padding-block: 0; }
+  .edit__track { height: 300vh; }
+  .edit__stage { position: sticky; top: var(--nav-h); height: calc(100vh - var(--nav-h)); display: flex; align-items: center; }
+  .edit:not(.is-live) .edit__track { height: auto; padding-block: var(--section); }
+  .edit:not(.is-live) .edit__stage { position: static; height: auto; }
+}
+@media (max-width: 899px) {
+  .edit__grid { grid-template-columns: 1fr; }
+  .edit__page { transform: none; }
+}
+@media (max-width: 560px) {
+  .edit__item { grid-template-columns: minmax(0, 1fr) 64px; column-gap: 10px; padding-left: 14px; }
+  .edit__margin { font-size: 14px; }
+  .edit.is-live .edit__nib { left: calc(14px + (100% - 14px - 64px - 10px) * var(--w)); }
+  .edit__head { grid-template-columns: 1fr; }
+  .edit__timer { grid-column: 1; grid-row: auto; }
+}
