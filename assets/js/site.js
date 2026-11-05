@@ -175,6 +175,17 @@
     });
   }
 
+  /* Back to top: scroll the page itself (anchoring to the sticky header does nothing) */
+  document.querySelectorAll('a[href="#top"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      var t = document.getElementById('top');
+      if (t) t.focus({ preventScroll: true });
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    });
+  });
+
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 })();
