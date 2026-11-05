@@ -442,6 +442,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .tier__name { margin-top: 22px; font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.05; letter-spacing: -.015em; }
 .tier__for { margin-top: 10px; font-size: 16px; color: var(--muted); min-height: 3em; }
 .tier__price { margin-top: 22px; padding: 18px 0; border-block: 1px solid var(--hair); font-family: var(--serif); font-size: 30px; line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.tier__price--ask { font-size: 22px; line-height: 1.25; }
 .tier__list { margin: 22px 0 30px; display: grid; gap: 12px; flex: 1; }
 .tier__list li { position: relative; padding-left: 22px; font-size: 16px; line-height: 1.45; }
 .tier__list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 1px; background: var(--cobalt); }
