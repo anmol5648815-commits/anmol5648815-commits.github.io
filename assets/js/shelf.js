@@ -165,16 +165,20 @@
   var cursor = document.getElementById('cursor');
   var useCursor = FINE && cursor;
   if (useCursor) { document.documentElement.classList.add('has-cursor'); cursor.style.visibility = 'hidden'; }
-  var overBtn = false, overInput = false;
+  var overBtn = false, overInput = false, overDark = false, probeTick = 0;
+  /* Read what is under the pointer. Also re-run while scrolling, because content moves
+     under a still pointer without firing pointerover. */
+  var probeUnder = function (tg) {
+    if (!tg || !tg.closest) return;
+    overInput = !!tg.closest('input, textarea, select');
+    overBtn = !overInput && !!tg.closest('a, button, summary, label, .cat__row') && !tg.closest('.shelf');
+    overDark = !!tg.closest('.band') && !tg.closest('.btn--paper');
+  };
   document.addEventListener('pointermove', function (e) {
     mx = e.clientX; my = e.clientY;
     if (e.pointerType === 'mouse' && useCursor) cursor.style.visibility = 'visible';
   }, { passive: true });
-  document.addEventListener('pointerover', function (e) {
-    var tg = e.target;
-    overInput = !!(tg.closest && tg.closest('input, textarea, select'));
-    overBtn = !overInput && !!(tg.closest && tg.closest('a, button, summary, label')) && !tg.closest('.shelf');
-  });
+  document.addEventListener('pointerover', function (e) { probeUnder(e.target); });
   document.documentElement.addEventListener('pointerleave', function () { if (useCursor) cursor.style.visibility = 'hidden'; });
 
   /* ---------- Detail sheet ---------- */
@@ -363,6 +367,18 @@
   addEventListener('scroll', readShelf, { passive: true });
   addEventListener('resize', function () { measure(); readShelf(); setTab(FILES[active].cat); });
 
+  /* ---------- First-visit hint: slides out of its mask after the first interaction ---------- */
+  var hint = document.getElementById('hero-hint');
+  var hintGone = false, T_START = T;
+  function hideHint() {
+    if (hintGone || !hint) return;
+    hintGone = true;
+    var line = hint.firstElementChild;
+    if (REDUCE) { hint.style.visibility = 'hidden'; return; }
+    line.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(110%)' }],
+      { duration: 500, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
+  }
+
   /* ---------- Frame loop ---------- */
   var last = performance.now();
   function frame(now) {
@@ -372,6 +388,7 @@
     if (Math.abs(T - s) < 1e-4) s = T;
     if (Math.abs(s) > LOOP * 4) { var sh = Math.round(s / LOOP) * LOOP; s -= sh; T -= sh; T0 -= sh; }
 
+    if (!hintGone && (Math.abs(T - T_START) > 0.4 || isOpen)) hideHint();
     var idx = mod(Math.round(s), N);
     if (idx !== active) setActive(idx, Math.sign(T - s) || 1);
 
@@ -416,6 +433,8 @@
       cursor.classList.toggle('is-spine', !onCover && overSpine);
       cursor.classList.toggle('is-btn', !onCover && !overSpine && overBtn);
       cursor.classList.toggle('is-hidden', overInput);
+      if (++probeTick % 6 === 0) probeUnder(document.elementFromPoint(mx, my));
+      cursor.classList.toggle('is-dark', overDark && !isOpen);
     }
     requestAnimationFrame(frame);
   }

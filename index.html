@@ -29,10 +29,8 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
+  <link rel="preload" href="assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-tight-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="assets/img/covers/cvli.webp" type="image/webp">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>document.documentElement.classList.remove("no-js")</script>
@@ -177,6 +175,10 @@
         <svg viewBox="0 0 18 10" aria-hidden="true"><path d="M13 1 L17 5 L13 9 M17 5 H1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
       </button>
 
+      <div class="hero__hint mask" id="hero-hint" aria-hidden="true">
+        <p class="lbl"><span class="hint--fine">Drag to browse / Click the cover to open</span><span class="hint--touch">Swipe to browse / Tap the cover to open</span></p>
+      </div>
+
       <div class="hero__foot">
         <div class="hero__intro">
           <h1 class="hero__title">Your experience, written for the job you want next.</h1>
@@ -191,7 +193,7 @@
       <div class="band__media" aria-hidden="true">
         <picture>
           <source media="(max-width: 767px)" srcset="assets/img/bands/standout-portrait.webp" type="image/webp">
-          <source srcset="assets/img/bands/standout-1280.webp 1280w, assets/img/bands/standout-2000.webp 2000w" sizes="100vw" type="image/webp">
+          <source srcset="assets/img/bands/standout-1280.webp 1280w, assets/img/bands/standout-1600.webp 1600w, assets/img/bands/standout-2000.webp 2000w" sizes="100vw" type="image/webp">
           <img class="band__img" src="assets/img/bands/standout-1280.webp" width="1280" height="854" alt="" loading="lazy" decoding="async">
         </picture>
       </div>
@@ -224,31 +226,31 @@
             <h3 class="cat__name">CV &amp; resume writing</h3>
             <p class="cat__desc">A rewritten CV built around your achievements, formatted to read cleanly in applicant tracking systems and to a human in a hurry.</p>
             <p class="cat__out lbl">Word + PDF files</p>
-            <button class="cat__open lbl box" type="button" data-open="cv">Open file</button>
+            <button class="cat__open lbl box" type="button" data-open="cv" aria-label="Open file: CV &amp; resume writing">Open file</button>
           </li>
           <li class="cat__row">
             <h3 class="cat__name">LinkedIn profile optimisation</h3>
             <p class="cat__desc">Headline, About section and experience rewritten so recruiters searching for your next role actually find you, and want to message you.</p>
             <p class="cat__out lbl">Copy ready to paste</p>
-            <button class="cat__open lbl box" type="button" data-open="cvli">Open file</button>
+            <button class="cat__open lbl box" type="button" data-open="cvli" aria-label="Open file: LinkedIn profile optimisation">Open file</button>
           </li>
           <li class="cat__row">
             <h3 class="cat__name">Interview coaching</h3>
             <p class="cat__desc">Mock interviews for your target role with honest feedback. We build your stories so you can answer the hard questions without rehearsing a script.</p>
             <p class="cat__out lbl">Live video sessions</p>
-            <button class="cat__open lbl box" type="button" data-open="interview">Open file</button>
+            <button class="cat__open lbl box" type="button" data-open="interview" aria-label="Open file: Interview coaching">Open file</button>
           </li>
           <li class="cat__row">
             <h3 class="cat__name">Career development coaching</h3>
             <p class="cat__desc">For when the question is what to apply for, not how. We get clear on direction and build a plan you can act on this month.</p>
             <p class="cat__out lbl">Live video sessions</p>
-            <button class="cat__open lbl box" type="button" data-open="career">Open file</button>
+            <button class="cat__open lbl box" type="button" data-open="career" aria-label="Open file: Career development coaching">Open file</button>
           </li>
           <li class="cat__row">
             <h3 class="cat__name">Cover letters &amp; professional bios</h3>
             <p class="cat__desc">Cover letters, speaker bios and profile copy written in your voice, for when you need to introduce yourself well in writing.</p>
             <p class="cat__out lbl">Word + PDF files</p>
-            <button class="cat__open lbl box" type="button" data-open="letters">Open file</button>
+            <button class="cat__open lbl box" type="button" data-open="letters" aria-label="Open file: Cover letters &amp; professional bios">Open file</button>
           </li>
         </ul>
       </div>
@@ -446,7 +448,7 @@
         <div class="band__media" aria-hidden="true">
           <picture>
             <source media="(max-width: 767px)" srcset="assets/img/bands/focus-mobile.webp" type="image/webp">
-            <source srcset="assets/img/bands/focus-1280.webp 1280w, assets/img/bands/focus-2000.webp 2000w" sizes="100vw" type="image/webp">
+            <source srcset="assets/img/bands/focus-1280.webp 1280w, assets/img/bands/focus-1600.webp 1600w, assets/img/bands/focus-2000.webp 2000w" sizes="100vw" type="image/webp">
             <img class="band__img" src="assets/img/bands/focus-1280.webp" width="1280" height="960" alt="" loading="lazy" decoding="async">
           </picture>
         </div>
@@ -505,16 +507,44 @@
   </main>
 
   <footer class="foot">
-    <p class="lbl">© <span id="year">2026</span> Digital Virtuoso Services. All rights reserved.</p>
-    <nav class="foot__social lbl" aria-label="Social">
-      <a href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" rel="noopener">LinkedIn</a>
-      <span aria-hidden="true">/</span>
-      <a href="https://twitter.com/CipherPulse568" target="_blank" rel="noopener">X</a>
-      <span aria-hidden="true">/</span>
-      <a href="https://instagram.com/scri.ptsorcery/" target="_blank" rel="noopener">Instagram</a>
-      <span aria-hidden="true">/</span>
-      <a href="https://github.com/anmol5648815-commits" target="_blank" rel="noopener">GitHub</a>
-    </nav>
+    <div class="wrap foot__top">
+      <a class="foot__mark" href="#top" aria-label="Digital Virtuoso Services, back to top">Digital Virtuoso <span>Services</span></a>
+      <p class="foot__line">CV writing, LinkedIn and interview coaching by Anmol Sharma, for professionals stepping into bigger roles.</p>
+    </div>
+    <div class="wrap foot__cols">
+      <nav class="foot__col" aria-label="Services">
+        <p class="lbl foot__head">Open a file</p>
+        <ul>
+          <li><button type="button" data-open="cv">CV Rewrite</button></li>
+          <li><button type="button" data-open="cvli">CV + LinkedIn</button></li>
+          <li><button type="button" data-open="accel">Career Accelerator</button></li>
+          <li><button type="button" data-open="interview">Interview Coaching</button></li>
+          <li><button type="button" data-open="career">Career Coaching</button></li>
+          <li><button type="button" data-open="letters">Cover Letters &amp; Bios</button></li>
+        </ul>
+      </nav>
+      <div class="foot__col">
+        <p class="lbl foot__head">Contact</p>
+        <ul>
+          <li><a data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:anmol.digitalvirtuoso@gmail.com">anmol.digitalvirtuoso@gmail.com</a></li>
+          <li class="foot__note">Replies within 24 hours. Working with clients worldwide, remotely.</li>
+        </ul>
+      </div>
+      <nav class="foot__col" aria-label="Social">
+        <p class="lbl foot__head">Elsewhere</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/anmol-sharma-a29669167/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://twitter.com/CipherPulse568" target="_blank" rel="noopener">X</a></li>
+          <li><a href="https://instagram.com/scri.ptsorcery/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://github.com/anmol5648815-commits" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap foot__base">
+      <p class="lbl">© <span id="year">2026</span> Digital Virtuoso Services</p>
+      <a class="lbl foot__top-link" href="#top">Back to top</a>
+    </div>
   </footer>
 
   <!-- Detail sheet: grows out of a cover -->
@@ -563,6 +593,7 @@
     <a class="btn btn--cobalt" data-wa="Hi Anmol, I'd like to book a free call about my CV." href="https://wa.me/919752798192" target="_blank" rel="noopener" tabindex="-1">Book a free call on WhatsApp</a>
   </div>
 
+  <div class="peek" id="peek" aria-hidden="true"><img alt="" width="474" height="900" decoding="async"></div>
   <div class="grain" aria-hidden="true"></div>
   <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span><span class="cursor__lbl">Open<br>file</span></div>
 

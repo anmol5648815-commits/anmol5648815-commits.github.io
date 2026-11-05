@@ -20,6 +20,7 @@ if (!reduce) {
   clipReveal('.quotes', '.quote');
   clipReveal('.facts', '.facts > div');
   if (finePointer) document.querySelectorAll('.finale__cta, .reviews__foot .btn').forEach(magnetic);
+  if (finePointer) cataloguePeek();
 }
 
 /* The dark band: the photo prints in from the top edge like a plate going
@@ -77,4 +78,55 @@ function magnetic(btn) {
     btn.addEventListener('pointermove', onMove);
     return () => { btn.removeEventListener('pointermove', onMove); animate(btn, { x: 0, y: 0 }, SPRING_SETTLE); };
   });
+}
+
+/* Catalogue hover preview: the file's cover follows the pointer, leaning with its speed.
+   Revealed by scale and clip, never by opacity. */
+function cataloguePeek() {
+  const list = document.querySelector('.cat');
+  const peek = document.getElementById('peek');
+  if (!list || !peek) return;
+  const img = peek.querySelector('img');
+  let x = 0, y = 0, tx = 0, ty = 0, vx = 0, shown = false, raf = 0, current = '';
+  const HIDDEN = 'inset(50% 50% 50% 50%)', SHOWN = 'inset(0% 0% 0% 0%)';
+  peek.style.clipPath = HIDDEN;
+  peek.style.transform = 'translate3d(-999px,-999px,0)';
+
+  const loop = () => {
+    const dx = tx - x;
+    x += dx * 0.18; y += (ty - y) * 0.18;
+    vx += (dx * 0.18 - vx) * 0.2;                        // smoothed horizontal speed
+    const lean = Math.max(-10, Math.min(10, vx * 0.6));  // lean into the movement
+    peek.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${(-4.5 + lean).toFixed(2)}deg)`;
+    if (shown || Math.abs(dx) > 0.5) raf = requestAnimationFrame(loop); else raf = 0;
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+
+  const show = (id) => {
+    const src = `assets/img/covers/${id}.webp`;
+    if (current !== src) {
+      current = src; img.src = src;
+      if (shown) animate(img, { scale: [1.08, 1] }, { duration: 0.45, ease: EASE });
+    }
+    if (!shown) {
+      shown = true; x = tx; y = ty; kick();
+      animate(peek, { clipPath: [HIDDEN, SHOWN] }, { duration: 0.5, ease: EASE });
+    }
+  };
+  list.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    tx = e.clientX + 28; ty = e.clientY - peek.offsetHeight / 2;
+    const row = e.target.closest('.cat__row');
+    if (row) show(row.querySelector('[data-open]').dataset.open);
+    kick();
+  });
+  list.addEventListener('pointerleave', () => {
+    if (!shown) return;
+    shown = false;
+    animate(peek, { clipPath: [SHOWN, HIDDEN] }, { duration: 0.3, ease: [0.5, 0, 0.75, 0] });
+  });
+  addEventListener('scroll', () => {
+    if (!shown) return;
+    shown = false; peek.getAnimations().forEach((a) => a.cancel()); peek.style.clipPath = HIDDEN;
+  }, { passive: true });
 }
